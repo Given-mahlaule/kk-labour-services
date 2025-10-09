@@ -1,15 +1,62 @@
 import Container from "./ui/Container";
 import Button from "./ui/Button";
 import { Users, Briefcase, Clock, ClipboardList } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+  
+  const heroImageUrl = 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80';
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImageLoaded(true);
+      // Small delay to ensure smooth transition
+      setTimeout(() => setShowContent(true), 100);
+    };
+    img.src = heroImageUrl;
+  }, []);
+
+  if (!showContent) {
+    return (
+      <section id="home" className="relative bg-slate-900 text-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-slate-900/90 to-slate-900/95"></div>
+        <Container variant="wide" className="relative py-16 md:py-24 lg:py-28">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              {/* Loading skeleton */}
+              <div className="animate-pulse">
+                <div className="h-16 bg-white/10 rounded mb-6"></div>
+                <div className="h-6 bg-white/10 rounded mb-4"></div>
+                <div className="h-6 bg-white/10 rounded mb-8 w-3/4"></div>
+                <div className="flex gap-4">
+                  <div className="h-12 w-32 bg-white/10 rounded"></div>
+                  <div className="h-12 w-32 bg-white/10 rounded"></div>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <div className="animate-pulse">
+                <div className="w-80 h-80 md:w-96 md:h-96 bg-white/10 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+    );
+  }
+
   return (
     <section id="home" className="relative bg-slate-900 text-white">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500 ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80')`
+          backgroundImage: `url('${heroImageUrl}')`
         }}
       ></div>
       
