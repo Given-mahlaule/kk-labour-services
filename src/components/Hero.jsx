@@ -5,10 +5,21 @@ import { Users, Briefcase, Clock, ClipboardList } from "lucide-react";
 export default function Hero() {
   return (
     <section id="home" className="relative bg-slate-900 text-white">
-      {/* Clean professional gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-slate-900"></div>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80')`
+        }}
+      ></div>
       
-      <Container variant="wide" className="relative py-20 md:py-32">
+      {/* Blue Gradient Overlay for contrast and brand consistency */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-slate-900/90 to-slate-900/95"></div>
+      
+      {/* Additional subtle pattern overlay for texture */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-transparent"></div>
+      
+      <Container variant="wide" className="relative py-16 md:py-24 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Content Column */}
