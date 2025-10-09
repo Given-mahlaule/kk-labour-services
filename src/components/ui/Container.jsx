@@ -1,12 +1,12 @@
 export default function Container({ children, className = "", variant = "default" }) {
   const variants = {
-    default: "max-w-[1200px]", // wider than previous 6xl (~1152px)
-    wide: "max-w-[1600px]",
+    default: "max-w-[1400px]", // wider default
+    wide: "max-w-[1800px]", // extra wide
     full: "max-w-none",
   };
 
   return (
-    <div className={`mx-auto w-full ${variants[variant] || variants.default} px-6 lg:px-10 2xl:px-14 ${className}`}>
+    <div className={`mx-auto w-full ${variants[variant] || variants.default} px-4 lg:px-8 2xl:px-12 ${className}`}>
       {children}
     </div>
   );

@@ -6,6 +6,7 @@ import About from "../components/About";
 import Process from "../components/Process";
 import TargetedCTA from "../components/TargetedCTA";
 import Testimonials from "../components/Testimonials";
+import FAQ from "../components/FAQ";
 import CTA from "../components/CTA";
 import Contact from "../components/Contact";
 
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Process />
       <TargetedCTA />
       <Testimonials />
+      <FAQ />
       <CTA />
       <div id="contact">
         <Contact />

@@ -14,15 +14,32 @@ function TestimonialCard({ quote, name, role }) {
 
 export default function Testimonials() {
   const data = [
-    { quote: "KLS mobilised within a day and handled all onboarding and documentation.", name: "Operations Director", role: "Manufacturing" },
-    { quote: "Professional partner—clear reporting and dependable attendance.", name: "Site Manager", role: "Construction" },
-    { quote: "Reliable workforce solutions with excellent compliance standards.", name: "Project Manager", role: "Logistics" },
+    { 
+      quote: "Fantastic tool for flexible workforce management! We've streamlined our entire hiring process.", 
+      name: "Alex P.", 
+      role: "Operations Manager" 
+    },
+    { 
+      quote: "We've cut scheduling time in half. The automation features are incredible.", 
+      name: "Sarah L.", 
+      role: "HR Director" 
+    },
+    { 
+      quote: "The compliance monitoring gives us peace of mind. No more worrying about regulations.", 
+      name: "Michael R.", 
+      role: "Facilities Manager" 
+    },
   ];
   return (
     <section id="testimonials" className="bg-[var(--bg-primary)] py-20 lg:py-28">
       <Container variant="wide">
         <div className="mx-auto max-w-3xl text-center mb-12">
-          <h2 className="text-4xl font-bold tracking-tight text-[var(--text-white)] sm:text-5xl">What clients say</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-[var(--text-white)] sm:text-5xl">
+            Trusted by <span className="text-[var(--primary-yellow)]">Industry Leaders</span>
+          </h2>
+          <p className="text-xl text-[var(--text-secondary)] mt-4">
+            See what our clients say about transforming their workforce management
+          </p>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
           {data.map((t, i) => <TestimonialCard key={i} {...t} />)}

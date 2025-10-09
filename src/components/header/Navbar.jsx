@@ -1,136 +1,130 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, Linkedin, Facebook, Twitter } from "lucide-react";
 import Container from "../ui/Container";
-import Button from "../ui/Button";
+import logoJpg from '../../assets/logo.jpg';
 
 const NAV = [
-  { label: "Home", href: "#home", isRoute: false },
-  { label: "Services", href: "#services", isRoute: false },
-  { label: "About", href: "#about", isRoute: false },
-  { label: "Contact", href: "#contact", isRoute: false },
+  { label: "Home", href: "#home" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
   { label: "Careers", href: "https://careers.kklabourservices.com", isExternal: true },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [isOnLightBackground, setIsOnLightBackground] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      
-      // Get all sections with light backgrounds
-      const lightSections = [
-        document.getElementById('services'),
-        document.getElementById('about'), 
-        document.getElementById('process'),
-        // Also check for any white background elements in contact section
-        ...Array.from(document.querySelectorAll('.bg-\\[var\\(--bg-white\\)\\]')),
-        ...Array.from(document.querySelectorAll('.bg-white'))
-      ].filter(Boolean);
-      
-      let isOverLightSection = false;
-      
-      // Check if navbar is over any light background element
-      for (const section of lightSections) {
-        const rect = section.getBoundingClientRect();
-        const sectionTop = rect.top + window.scrollY;
-        const sectionBottom = sectionTop + rect.height;
-        
-        // Check if navbar (top 80px of viewport) overlaps with light section
-        if (scrollY + 80 >= sectionTop && scrollY <= sectionBottom) {
-          isOverLightSection = true;
-          break;
-        }
-      }
-      
-      setIsOnLightBackground(isOverLightSection);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    handleScroll(); // Check initial position
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
 
   return (
-    <header className={`sticky top-0 z-40 border-b-2 transition-all duration-300 backdrop-blur ${
-      isOnLightBackground 
-        ? 'border-gray-200 bg-white/95 supports-[backdrop-filter]:bg-white/90' 
-        : 'border-[var(--border)] bg-[var(--bg-primary)]/95 supports-[backdrop-filter]:bg-[var(--bg-primary)]/90'
-    }`}>
-      <Container variant="wide" className="flex h-16 items-center justify-between">
-        <a href="#home" className={`text-xl font-black tracking-tight transition-colors duration-300 ${
-          isOnLightBackground ? 'text-gray-900' : 'text-[var(--text-white)]'
-        }`}>
-          KK <span className="text-[var(--accent)]">Labour Services</span>
+    <header className="sticky top-0 z-40 bg-black border-b border-gray-800">
+      {/* Social Media Bar */}
+      <div className="bg-black">
+        <Container variant="wide" className="flex items-center justify-end py-1">
+          <div className="flex items-center gap-4">
+            <a className="hover:text-white transition-colors duration-200 text-gray-400" href="#" aria-label="LinkedIn">
+              <Linkedin className="h-4 w-4" strokeWidth={2} />
+            </a>
+            <a className="hover:text-white transition-colors duration-200 text-gray-400" href="#" aria-label="Facebook">
+              <Facebook className="h-4 w-4" strokeWidth={2} />
+            </a>
+            <a className="hover:text-white transition-colors duration-200 text-gray-400" href="#" aria-label="Twitter">
+              <Twitter className="h-4 w-4" strokeWidth={2} />
+            </a>
+          </div>
+        </Container>
+      </div>
+      
+      {/* Main Navigation */}
+      <Container variant="wide" className="flex h-20 items-center justify-between">
+        
+        {/* Logo */}
+        <a href="#home" className="flex items-center">
+          <img 
+            src={logoJpg} 
+            alt="KK Labour Services" 
+            className="h-16 w-auto object-contain"
+          />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {NAV.map((n) => (
-            n.isExternal ? (
-              <a key={n.label} href={n.href} target="_blank" rel="noopener noreferrer" className={`text-sm font-bold transition-colors duration-300 ${
-                isOnLightBackground 
-                  ? 'text-gray-600 hover:text-gray-900' 
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-white)]'
-              }`}>
-                {n.label}
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          {NAV.map((item) => (
+            item.isExternal ? (
+              <a 
+                key={item.label} 
+                href={item.href} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+              >
+                {item.label}
               </a>
             ) : (
-              <a key={n.label} href={n.href} className={`text-sm font-bold transition-colors duration-300 ${
-                isOnLightBackground 
-                  ? 'text-gray-600 hover:text-gray-900' 
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-white)]'
-              }`}>
-                {n.label}
+              <a 
+                key={item.label} 
+                href={item.href} 
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+              >
+                {item.label}
               </a>
             )
           ))}
-          <a href="#contact" className="ml-4 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold px-6 py-2 rounded-lg transition-all duration-300 inline-block">
-            Contact
+          
+          {/* CTA Button */}
+          <a 
+            href="#contact" 
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+          >
+            Get Quote
           </a>
         </nav>
 
-        <button aria-label="Menu" className={`md:hidden transition-colors duration-300 ${
-          isOnLightBackground ? 'text-gray-900' : 'text-[var(--text-white)]'
-        }`} onClick={() => setOpen(!open)}>
+        {/* Mobile Menu Button */}
+        <button 
+          onClick={() => setOpen(!open)}
+          className="md:hidden p-2 text-white"
+          aria-label="Toggle menu"
+        >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </Container>
 
+      {/* Mobile Navigation */}
       {open && (
-        <div className={`border-t-2 md:hidden transition-all duration-300 ${
-          isOnLightBackground 
-            ? 'border-gray-200 bg-white' 
-            : 'border-[var(--border)] bg-[var(--bg-primary)]'
-        }`}>
-          <Container variant="wide" className="flex flex-col py-4">
-            {NAV.map((n) => (
-              n.isExternal ? (
-                <a key={n.label} href={n.href} target="_blank" rel="noopener noreferrer" className={`py-3 text-base font-semibold transition-colors duration-300 ${
-                  isOnLightBackground 
-                    ? 'text-gray-600 hover:text-gray-900' 
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-white)]'
-                }`}>
-                  {n.label}
-                </a>
-              ) : (
-                <a key={n.label} href={n.href} className={`py-3 text-base font-semibold transition-colors duration-300 ${
-                  isOnLightBackground 
-                    ? 'text-gray-600 hover:text-gray-900' 
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-white)]'
-                }`}>
-                  {n.label}
-                </a>
-              )
-            ))}
-            <a href="#contact" className="mt-4 w-full justify-center bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 rounded-lg text-center block">
-              Contact
-            </a>
+        <div className="md:hidden border-t border-gray-800 bg-black">
+          <Container variant="wide" className="py-4">
+            <nav className="flex flex-col gap-4">
+              {NAV.map((item) => (
+                item.isExternal ? (
+                  <a 
+                    key={item.label} 
+                    href={item.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-base font-medium text-gray-300 hover:text-white transition-colors"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <a 
+                    key={item.label} 
+                    href={item.href} 
+                    className="text-base font-medium text-gray-300 hover:text-white transition-colors"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )
+              ))}
+              
+              <a 
+                href="#contact" 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium text-center transition-colors mt-2"
+                onClick={() => setOpen(false)}
+              >
+                Get Quote
+              </a>
+            </nav>
           </Container>
         </div>
       )}

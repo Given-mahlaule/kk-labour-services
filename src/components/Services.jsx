@@ -4,12 +4,12 @@ import { Users, Briefcase, Shield, TrendingUp, Calculator, Clock } from "lucide-
 
 function Card({ title, icon: Icon, children }) {
   return (
-    <div className="group h-full rounded-xl border border-[var(--border-strong)] bg-white/95 p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-[var(--accent)] focus-within:border-[var(--accent)]">
-      <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-md bg-[var(--accent)]/12 ring-1 ring-[var(--accent)]/15">
-        <Icon className="h-6 w-6 text-[var(--accent)]" strokeWidth={2} />
+    <div className="group h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-blue-300 focus-within:border-blue-500">
+      <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 ring-1 ring-blue-100">
+        <Icon className="h-6 w-6 text-blue-600" strokeWidth={2} />
       </div>
-      <h3 className="text-base font-semibold tracking-tight text-[var(--ink)] mb-2">{title}</h3>
-      <p className="text-sm leading-relaxed text-[var(--muted)]">{children}</p>
+      <h3 className="text-lg font-semibold text-slate-900 mb-3">{title}</h3>
+      <p className="text-sm leading-relaxed text-slate-600">{children}</p>
     </div>
   );
 }
@@ -17,8 +17,8 @@ function Card({ title, icon: Icon, children }) {
 function MiniKey({ title, text }) {
   return (
     <div className="text-center">
-      <div className="text-xl font-bold text-[var(--text-dark)] mb-2">{title}</div>
-      <div className="text-base text-[var(--gray-dark)]">{text}</div>
+      <div className="text-2xl font-bold text-slate-900 mb-2">{title}</div>
+      <div className="text-base text-slate-600">{text}</div>
     </div>
   );
 }
