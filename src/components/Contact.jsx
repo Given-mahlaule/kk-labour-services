@@ -36,38 +36,38 @@ export default function Contact() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Methods - Left Side */}
           <div className="lg:col-span-1 space-y-4">
-            <div className="bg-[var(--bg-white)] border border-[var(--border)] rounded-lg p-4 hover:border-[var(--accent)] transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 hover:bg-white/15 hover:border-blue-400/50 transition-all duration-300">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--accent)] text-white">
                   <Phone className="h-5 w-5" strokeWidth={2} />
                 </div>
                 <div>
-                  <div className="font-bold text-[var(--text-dark)]">Call us directly</div>
-                  <div className="text-[var(--gray-dark)] text-sm">081 729 7875</div>
+                  <div className="font-bold text-white">Call us directly</div>
+                  <div className="text-slate-300 text-sm">081 729 7875</div>
                 </div>
               </div>
             </div>
             
-            <div className="bg-[var(--bg-white)] border border-[var(--border)] rounded-lg p-4 hover:border-[var(--accent)] transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 hover:bg-white/15 hover:border-blue-400/50 transition-all duration-300">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--accent)] text-white">
                   <Mail className="h-5 w-5" strokeWidth={2} />
                 </div>
                 <div>
-                  <div className="font-bold text-[var(--text-dark)]">Email us</div>
-                  <div className="text-[var(--gray-dark)] text-sm">info@kklabourservices.co.za</div>
+                  <div className="font-bold text-white">Email us</div>
+                  <div className="text-slate-300 text-sm">info@kklabourservices.co.za</div>
                 </div>
               </div>
             </div>
             
-            <div className="bg-[var(--bg-white)] border border-[var(--border)] rounded-lg p-4 hover:border-[var(--accent)] transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 hover:bg-white/15 hover:border-blue-400/50 transition-all duration-300">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--accent)] text-white">
                   <MapPin className="h-5 w-5" strokeWidth={2} />
                 </div>
                 <div>
-                  <div className="font-bold text-[var(--text-dark)]">Gauteng office</div>
-                  <div className="text-[var(--gray-dark)] text-sm">Covering all Gauteng areas</div>
+                  <div className="font-bold text-white">Gauteng office</div>
+                  <div className="text-slate-300 text-sm">Covering all Gauteng areas</div>
                 </div>
               </div>
             </div>
