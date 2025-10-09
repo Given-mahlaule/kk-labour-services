@@ -32,6 +32,7 @@ export default function Contact() {
             Our team is available to discuss your labour brokerage needs and explain how our services can support your business operations across Gauteng.
           </p>
         </div>
+        
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Methods - Left Side */}
