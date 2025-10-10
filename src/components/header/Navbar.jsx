@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Menu, X, Linkedin, Facebook, Twitter } from "lucide-react";
 import Container from "../ui/Container";
 import logoJpg from '../../assets/logo.jpg';
+import { handleCareersClick } from "../../utils/navigation";
 
 const NAV = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
-  { label: "Careers", href: "https://careers.kklabourservices.com", isExternal: true },
+  { label: "Careers", href: "#", isExternal: true, onClick: handleCareersClick },
 ];
 
 export default function Navbar() {
@@ -49,15 +50,13 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-8">
           {NAV.map((item) => (
             item.isExternal ? (
-              <a 
+              <button 
                 key={item.label} 
-                href={item.href} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+                onClick={item.onClick}
                 className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
               >
                 {item.label}
-              </a>
+              </button>
             ) : (
               <a 
                 key={item.label} 
@@ -95,16 +94,16 @@ export default function Navbar() {
             <nav className="flex flex-col gap-4">
               {NAV.map((item) => (
                 item.isExternal ? (
-                  <a 
+                  <button 
                     key={item.label} 
-                    href={item.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-base font-medium text-gray-300 hover:text-white transition-colors"
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      item.onClick(e);
+                      setOpen(false);
+                    }}
+                    className="text-base font-medium text-gray-300 hover:text-white transition-colors text-left"
                   >
                     {item.label}
-                  </a>
+                  </button>
                 ) : (
                   <a 
                     key={item.label} 

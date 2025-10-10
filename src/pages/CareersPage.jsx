@@ -1,6 +1,7 @@
 import Container from "../components/ui/Container";
 import { Heading } from "../components/ui/Heading";
-import { Briefcase, Clock, Users } from "lucide-react";
+import { Briefcase, Clock, Users, ArrowRight } from "lucide-react";
+import { handleCareersClick } from "../utils/navigation";
 
 export default function CareersPage() {
   return (
@@ -24,13 +25,17 @@ export default function CareersPage() {
               Applications Portal
             </h2>
             <p className="text-[var(--text-secondary)] mb-6">
-              This is our applications portal where you can explore career opportunities with us.
+              Apply for career opportunities and join our dynamic team through our dedicated careers portal.
             </p>
             
-            <div className="inline-flex items-center gap-2 bg-[var(--accent)] text-white px-6 py-3 rounded-lg">
-              <Clock className="h-5 w-5" />
-              <span className="font-medium">Page Under Construction</span>
-            </div>
+            <button
+              onClick={handleCareersClick}
+              className="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              <Briefcase className="h-5 w-5" />
+              <span>Apply Now - Careers Portal</span>
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </div>
           
           <div className="grid md:grid-cols-3 gap-6 text-left">
