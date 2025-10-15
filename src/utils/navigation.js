@@ -27,8 +27,8 @@ export const getUrls = () => {
     };
   } else {
     return {
-      mainSite: 'https://given-mahlaule.github.io/kk-labour-services',
-      careersPortal: 'https://given-mahlaule.github.io/kk-careers-portal',
+      mainSite: 'https://kklabourservices.co.za/',
+      careersPortal: 'https://careers.kklabourservices.co.za/',
     };
   }
 };
